@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="content">
+    <h3>Search with account name</h3>
+    <div class="row">
+      <input type="text" [(ngModel)]="name">
+      <button *ngIf="!searching" (click)="onSearch()">Search</button>
+      <button *ngIf="searching"(click)="stopSearch()">Stop search</button>
+      <a href="#" class="speaker" (click)="muteAudio($event)">
+        <span></span>
+      </a>
+    </div>
+    <span *ngIf="mute">Notification sounds disabled</span>
+    <span *ngIf="!mute">Notification sounds enabled</span>
+    <div *ngIf="searching; else fill" class="loader">Loading...</div>
+    <ng-template #fill>
+      <div style="margin: 14px auto"></div>
+    </ng-template>
+    <div class="status">
+      <p>{{status}}</p> <p *ngIf="lastUpdated">Last updated: {{lastUpdated}}</p>
+    </div>
+  </div>
+</div>
+
