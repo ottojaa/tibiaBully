@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, of, Observable, timer, BehaviorSubject, Observer } from 'rxjs';
-import { flatMap, switchMap, takeWhile, take } from 'rxjs/operators';
+import { Subject, of, Observable, timer } from 'rxjs';
+import { flatMap, switchMap, take } from 'rxjs/operators';
 import { BullyserviceService } from './bullyservice.service';
 import { PushNotificationsService} from 'ng-push';
 import { isEqual } from 'lodash';
@@ -21,7 +21,9 @@ export class AppComponent implements OnInit {
 
   private searchTrigger$: Subject<string> = new Subject<string>();
 
-  constructor(private bully: BullyserviceService, private pushNotifications: PushNotificationsService) { }
+  constructor(private bully: BullyserviceService, private pushNotifications: PushNotificationsService) {
+    this.pushNotifications.requestPermission();
+  }
 
   ngOnInit(): void {
     this.pushNotifications.requestPermission();
