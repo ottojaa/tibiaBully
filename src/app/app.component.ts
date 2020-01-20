@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pushNotifications.requestPermission();
     this.searchPipe()
       .subscribe((page) => {
         this.domParser(page);
