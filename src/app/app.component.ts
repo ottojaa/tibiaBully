@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   constructor(private bully: BullyserviceService, private pushNotifications: PushNotificationsService) { }
 
   ngOnInit(): void {
+    this.pushNotifications.requestPermission();
     this.searchPipe()
       .subscribe((page) => {
         this.domParser(page);
